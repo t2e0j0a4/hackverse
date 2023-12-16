@@ -1,9 +1,18 @@
-import React from 'react'
+import "./Profile.css";
+import React from 'react';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
-const Profile = () => {
+const Dashboard = () => {
   return (
-    <div>Profile</div>
+    <main className='app__dashboard'>
+      <Sidebar/>
+      <div className="dashboard__profile">
+        <div className='profile__center'>
+          Profile
+        </div>
+      </div>
+    </main>
   )
 }
 
-export default Profile
+export default Dashboard

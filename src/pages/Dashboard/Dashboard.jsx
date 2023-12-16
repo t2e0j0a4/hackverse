@@ -1,5 +1,5 @@
-import React from 'react'
 import "./Dashboard.css";
+import React from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
 
 const Dashboard = () => {
@@ -7,10 +7,12 @@ const Dashboard = () => {
     <main className='app__dashboard'>
       <Sidebar/>
       <div className="dashboard__home">
-        <div className='dashboard__main'></div>
+        <div className='home__center'>
+          Home
+        </div>
       </div>
     </main>
   )
 }
 
-export default Dashboard;
+export default Dashboard
