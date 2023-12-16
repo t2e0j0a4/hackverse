@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./Registration.css";
-import RegisterSection from '../../components/RegisterSections/RegisterSection'
+import RegisterSection from '../../../components/RegisterSections/RegisterSection'
 
 const Registration = () => {
 
