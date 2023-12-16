@@ -60,13 +60,17 @@
     border-radius: 16px;
 }
 
-.user__intrests > div {
+.user__intrests > div:nth-child(2) {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 0.4rem;
+}
+
+.all__intrests {
+    flex-direction: row;
 }
 
 .register__section > input, .register__section > textarea, .year > input, .user__intrests input {

@@ -18,7 +18,7 @@ const Sidebar = () => {
         <div className='nav__menu'>
           <Link className={`${location.pathname === '/dashboard' && 'active__page'}`} to="/dashboard"><MdDashboard fontSize={21} /><span>Dashboard</span></Link>
           <Link className={`${location.pathname === '/dashboard/courses' && 'active__page'}`} to="/dashboard/courses"><SiBookstack fontSize={21} /><span>Courses</span></Link>
-          <Link className={`${location.pathname === '/dashboard/events' && 'active__page'}`} to="/dashboard/events"><MdEvent fontSize={21} /><span>Events</span></Link>
+          <Link className={`${location.pathname === '/dashboard/events' && 'active__page'}`} to="/dashboard/events"><MdEvent fontSize={21} /><span>Workshops</span></Link>
           <Link className={`${location.pathname === '/dashboard/profile' && 'active__page'}`} to="/dashboard/profile"><FaRegUserCircle fontSize={21} /><span>Profile</span></Link>
         </div>
 

@@ -5,7 +5,7 @@ import RegisterSection from '../../components/RegisterSections/RegisterSection'
 const Registration = () => {
 
   const [completedSections, setCompletedSections] = useState({
-    firstSec: true,
+    firstSec: false,
     secondSec: false,
     thirdSec: false
   });
