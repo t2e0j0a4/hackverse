@@ -6,11 +6,36 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    padding: 1.2rem 0.7rem;
+    padding: 0.5rem 0.7rem 1rem;
 }
 
 .progress__bar {
     width: 72px;
-    height: 4px;
+    height: 12px;
     background-color: #ddd;
+    position: relative;
+}
+
+.progress__bar.make__progress {
+    position: relative;
+    transition: width 0.3s ease;
+}
+
+.progress__bar::after {
+    width: 0;
+    height: 12px;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 0.3s ease;
+}
+
+.progress__bar.make__progress::after {
+    width: 72px;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--c-p);
 }

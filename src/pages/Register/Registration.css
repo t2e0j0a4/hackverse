@@ -22,7 +22,7 @@
     font-weight: 600;
 }
 
-.register__form {
+.register__section {
     width: 600px;
     max-width: 100%;
     height: 100%;
@@ -37,7 +37,39 @@
     box-shadow: 0 0 4px 2px #23232312;
 }
 
-.register__form > input {
+.year {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.user__intrests {
+    width: 600px;
+    max-width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    padding: 0 0.8rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    border-radius: 16px;
+}
+
+.user__intrests > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.4rem;
+}
+
+.register__section > input, .register__section > textarea, .year > input, .user__intrests input {
     width: 100%;
     padding: 0.6rem 0.7rem;
     border-radius: 8px;
@@ -49,16 +81,28 @@
     transition: all 0.3s ease;
 }
 
-.register__form > input:focus-visible {
+.register__section > textarea {
+    resize: vertical;
+    height: 180px;
+}
+
+.user__intrests > div p {
+    font-size: 0.8rem;
+    color: var(--c-p);
+    text-align: left;
+    font-family: var(--f-p);
+}
+
+.register__section > input:focus-visible, .register__section > textarea:focus-visible, .year > input:focus-visible, .user__intrests input:focus-visible {
     color: var(--c-p);
     border: 1px solid var(--c-p);
 }
 
-.register__form > input:focus-visible::placeholder {
+.register__section > input:focus-visible::placeholder, .register__section > textarea:focus-visible::placeholder, .year > input:focus-visible::placeholder, .user__intrests input:focus-visible::placeholder {
     color: #215efa7e;
 }
 
-.register__form > button {
+.register__section > button, .user__intrests > button {
     width: 100%;
     font-family: var(--f-p);
     font-size: 1rem;
@@ -72,14 +116,14 @@
     transition: all 0.3s ease;
 }
 
-.register__form > button:hover , .register__form > button:focus-visible {
+.register__section > button:hover , .register__section > button:focus-visible, .user__intrests > button:focus-visible, .user__intrests > button:hover {
     background-color: #FFF;
     border: 1px solid var(--c-p);
     color: var(--c-p);
 }
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    .register__form {
+    .register__section {
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
     }
@@ -98,4 +142,22 @@
     outline: 1px solid var(--c-p);
     border-radius: 4px;
     outline-offset: 4px;
+}
+
+.all__intrests {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.all__intrests span {
+    padding: 0.3rem;
+    background-color: var(--c-p);
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-family: var(--f-p);
+    font-size: 0.8rem;
 }
