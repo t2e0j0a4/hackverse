@@ -1,0 +1,16 @@
+@import "../../App.css";
+
+.section__progress {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 0.7rem;
+}
+
+.progress__bar {
+    width: 72px;
+    height: 4px;
+    background-color: #ddd;
+}
