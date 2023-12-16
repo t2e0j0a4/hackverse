@@ -9,19 +9,19 @@
     padding: 0.5rem 0.7rem 1rem;
 }
 
-.progress__bar {
+.register__progress {
     width: 72px;
     height: 12px;
     background-color: #ddd;
     position: relative;
 }
 
-.progress__bar.make__progress {
+.register__progress.make__progress {
     position: relative;
     transition: width 0.3s ease;
 }
 
-.progress__bar::after {
+.register__progress::after {
     width: 0;
     height: 12px;
     content: "";
@@ -31,7 +31,7 @@
     transition: width 0.3s ease;
 }
 
-.progress__bar.make__progress::after {
+.register__progress.make__progress::after {
     width: 72px;
     content: "";
     position: absolute;
