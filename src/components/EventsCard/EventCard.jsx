@@ -6,7 +6,7 @@ const EventCard = ({ id, workshopTitle, workshopDesc, workshopImage, workshopDat
   return (
     <div className="each__event">
         <img src={workshopImage} alt={workshopTitle} loading="lazy" />
-        <h3>{workshopTitle.length < 32 ? workshopTitle : workshopTitle.slice(0,32) + '...'}</h3>
+        <h3>{workshopTitle.length < 28 ? workshopTitle : workshopTitle.slice(0,28) + '...'}</h3>
         <p>{workshopDesc.length < 64 ? workshopDesc : workshopDesc.slice(0,64) + '...'}</p>
         <div className="others">
             <p>By {mentorName}</p>

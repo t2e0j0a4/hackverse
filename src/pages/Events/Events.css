@@ -23,6 +23,22 @@
     margin: 0 auto;
 }
 
+.events__center > h1 {
+    font-size: 1.5rem;
+    text-align: left;
+    color: #232323;
+}
+
+.all__events {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1.2rem;
+    justify-content: center;
+    place-items: center
+}
+
 @media all and (max-width: 1024px) {
 
     .app__dashboard {

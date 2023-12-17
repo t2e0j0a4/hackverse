@@ -74,6 +74,10 @@
         overflow-x: scroll;
     }
 
+    .all__workshops .each__event {
+        width: 240px;
+    }
+
     .all__courses::-webkit-scrollbar, .all__workshops::-webkit-scrollbar {
         width: 0;
         height: 0;

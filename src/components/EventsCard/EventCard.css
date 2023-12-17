@@ -2,18 +2,13 @@
 
 .each__event {
     flex: 0 0 auto;
+    max-width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 0.5rem;
-}
-
-@media all and (max-width: 800px) {
-    .each__event {
-        width: 240px;
-    }
 }
 
 .each__event img {
