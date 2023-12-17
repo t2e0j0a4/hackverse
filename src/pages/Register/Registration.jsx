@@ -1,14 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import axios from "axios";
 import "./Registration.css";
+import Complete from "../../images/Completed.svg";
+import React, { useEffect, useState } from 'react'
 import RegisterSection from '../../components/RegisterSections/RegisterSection'
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
+
+  const navigate = useNavigate();
+  const baseServerURL = 'http://localhost:8000';
 
   const [completedSections, setCompletedSections] = useState({
     firstSec: false,
     secondSec: false,
     thirdSec: false
   });
+
+  const [pageLoading, setPageLoading] = useState(false);
+  const [registerMessage, setRegisterMessage] = useState('');
 
   // User Details - Section 1
 
@@ -18,8 +27,27 @@ const Registration = () => {
     password: ''
   });
 
-  const validateUserDetails = (e) => {
+  const validateUserDetails = async (e) => {
     e.preventDefault();
+
+    setPageLoading(true);
+
+    const response = await axios.post(`${baseServerURL}/api/v1/student/auth/register`, {
+      fullName: userDetails.fullName,
+      email: userDetails.email,
+      password: userDetails.password
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const authToken = response.data.token;
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+
+    setPageLoading(false);
+
     setCompletedSections({
       ...completedSections, firstSec: true
     });
@@ -28,11 +56,11 @@ const Registration = () => {
   // Other Details - Section 2
 
   const [otherDetails, setOtherDetails] = useState({
-    bio: '',
+    description: '',
     school: '',
     degree: '',
-    endYear: '',
-    startYear: '',
+    endDate: '',
+    startDate: '',
     fieldOfStudy: '',
   })
 
@@ -56,6 +84,27 @@ const Registration = () => {
     setUserIntrests(() => userInputsInText.split(',').map((item) => item.trim()));
   }, [userInputsInText]);
 
+  const finalRegistrationSubmit = async (e) => {
+    e.preventDefault();
+    
+    setPageLoading(true);
+
+    
+    await axios.patch(`${baseServerURL}/api/v1/student/me`, {
+      education : otherDetails,
+      interests: userIntrests
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    setPageLoading(false);
+    setRegisterMessage('Successfully Registered');
+    setCompletedSections({...completedSections, thirdSec: true});
+    navigate('/dashboard');
+  }
+
   return (
     <main className="app__register">
       <h1>Register</h1>
@@ -67,7 +116,13 @@ const Registration = () => {
             <input required type="text" name="fullName" placeholder="Full Name*" value={userDetails.fullName} onChange={(e) => {setUserDetails({...userDetails, [e.target.name]: e.target.value})}} />      
             <input required type="email" name="email" placeholder="Email*" value={userDetails.email} onChange={(e) => {setUserDetails({...userDetails, [e.target.name]: e.target.value})}} />      
             <input required type="password" name="password" placeholder="Password*" value={userDetails.password} onChange={(e) => {setUserDetails({...userDetails, [e.target.name]: e.target.value})}} />
-            <button type="submit">Next</button>
+            <button type="submit">
+              {
+                pageLoading ? (<span className="loader"></span>) : (
+                  <span>Next</span>
+                )
+              }
+            </button>
           </form>
         )
       }
@@ -79,18 +134,24 @@ const Registration = () => {
             <input name="degree" type="text" value={otherDetails.degree} onChange={(e) => {changeOtherDetails(e)}}  placeholder="Degree" />
             <input name="fieldOfStudy" type="text" value={otherDetails.fieldOfStudy} onChange={(e) => {changeOtherDetails(e)}}  placeholder="Field of Study"/>
             <div className="year">
-              <input name="startYear" type="text" value={otherDetails.startYear} onChange={(e) => {changeOtherDetails(e)}}  placeholder="Start Year" />
-              <input name="endYear" type="text" value={otherDetails.endYear} onChange={(e) => {changeOtherDetails(e)}}  placeholder="End Year" />
+              <input name="startDate" type="text" value={otherDetails.startDate} onChange={(e) => {changeOtherDetails(e)}}  placeholder="Start Year" />
+              <input name="endDate" type="text" value={otherDetails.endDate} onChange={(e) => {changeOtherDetails(e)}}  placeholder="End Year" />
             </div>
-            <textarea name="bio" placeholder="About yourself" value={otherDetails.bio} onChange={(e) => {changeOtherDetails(e)}} ></textarea> 
-            <button type="submit">Next</button>
+            <textarea name="description" placeholder="About yourself" value={otherDetails.description} onChange={(e) => {changeOtherDetails(e)}} ></textarea> 
+            <button type="submit">
+              {
+                pageLoading ? (<span class="loader"></span>) : (
+                  <span>Next</span>
+                )
+              }
+            </button>
           </form>
         )
       }
 
       {
         (completedSections.firstSec && completedSections.secondSec) && (
-          <form className="user__intrests">
+          <form className="user__intrests" onSubmit={(e) => {finalRegistrationSubmit(e)}}>
             <div className='all__intrests'>
               {
                 (userIntrests.length > 1) && (
@@ -106,8 +167,25 @@ const Registration = () => {
               }}/>
               <p>Enter comma seperated</p>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit">
+              {
+                pageLoading ? (<span className="loader"></span>) : (
+                  <span>Next</span>
+                )
+              }
+            </button>
           </form>
+        )
+      }
+
+      {
+        (completedSections.firstSec && completedSections.secondSec && completedSections.thirdSec && registerMessage !== '') && (
+          <div className="confirm__register">
+            <div className="confirm__popup">
+              <img src={Complete} alt="Successful" />
+              <p>Successfully Registered...</p>
+            </div>
+          </div>
         )
       }
       

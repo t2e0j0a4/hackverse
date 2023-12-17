@@ -69,6 +69,7 @@
     border-radius: 8px;
     color: #FFF;
     outline: none;
+    position: relative;
     transition: all 0.3s ease;
 }
 
@@ -99,3 +100,28 @@
     border-radius: 4px;
     outline-offset: 4px;
 }
+
+.loader {
+    width: 30px;
+    height: 30px;
+    border: 3px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.register__section > button:hover .loader, .user__intrests > button:hover .loader {
+    border: 3px solid var(--c-p);
+    border-bottom-color: transparent;
+} 
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
