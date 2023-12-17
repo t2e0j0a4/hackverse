@@ -11,6 +11,7 @@ import CourseCard from "../../components/CourseCard/CourseCard";
 import EventCard from "../../components/EventsCard/EventCard";
 
 const Dashboard = () => {
+
   return (
     <main className='app__dashboard'>
       <Sidebar/>

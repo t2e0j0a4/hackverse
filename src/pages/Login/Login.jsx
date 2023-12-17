@@ -45,12 +45,12 @@ const Login = () => {
         <button type="submit">
           {
             loading ? (<span className="loader"></span>) : (
-              <span>Next</span>
+              <span>Login</span>
             )
           }
         </button>
       </form>
-      <p>New User? <Link to={"/register"}></Link></p>
+      <p>New User? <Link to={"/register"}>Register</Link></p>
     </main>
   )
 }

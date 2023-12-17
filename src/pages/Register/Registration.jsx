@@ -1,11 +1,17 @@
 import axios from "axios";
 import "./Registration.css";
 import Complete from "../../images/Completed.svg";
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import RegisterSection from '../../components/RegisterSections/RegisterSection'
 import { useNavigate } from "react-router-dom";
 
+// Context
+import { AppContext } from "../../context/AppContext";
+
 const Registration = () => {
+
+  const appContext = useContext(AppContext);
+  const {setUserEmailFromRegistration} = appContext;
 
   const navigate = useNavigate();
   const baseServerURL = 'http://localhost:8000';
@@ -43,6 +49,7 @@ const Registration = () => {
     });
 
     const authToken = response.data.token;
+    setUserEmailFromRegistration(response.data.user.email);
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
 

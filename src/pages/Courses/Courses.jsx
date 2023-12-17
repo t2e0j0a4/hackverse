@@ -1,9 +1,11 @@
 import "./Courses.css";
 import React from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import CourseCard from "../../components/CourseCard/CourseCard";
 
 // React Icons
 import { IoSearch } from "react-icons/io5";
+import { dummyCourses } from "../../data";
 
 const Dashboard = () => {
   return (
@@ -15,7 +17,7 @@ const Dashboard = () => {
           {/* Search Box with Title */}
 
           <section className="search__box">
-            <h2>All Courses</h2>
+            <h2>Courses</h2>
             <div className="search" >
               <IoSearch className="search__icon" fontSize={24} />
               <input type="text" placeholder="Search Courses" />
@@ -26,7 +28,16 @@ const Dashboard = () => {
 
           {/* Showing Courses */}
 
-          
+          <section className="courses__section">
+            <h3>Courses we like to Offer</h3>
+            <div className="show__courses">
+              {
+                dummyCourses.map((item) => {
+                  return <CourseCard key={item.id} {...item} />
+                })
+              }
+            </div>
+          </section>
 
           {/* Showing Courses */}
 
